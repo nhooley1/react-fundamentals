@@ -1,10 +1,10 @@
 import './App.css';
+import AndForm from './components/AndForm';
 
 function App() {
   return (
     <div className="App">
-      <p>This is react fundamentals</p>
-      <p>Please checkout a branch</p>
+      <AndForm />
     </div>
   );
 }
