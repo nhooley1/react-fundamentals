@@ -1,0 +1,32 @@
+.container {
+  padding: 10px;
+  display: flex;
+}
+.item {
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.highlighted {
+  border-bottom: 5px solid red;
+}
+
+.value {
+  padding-right: 20px;
+}
+
+.key {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.update {
+  background-color: blue;
+  color: white;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+}

@@ -1,10 +1,10 @@
 import './App.css';
-import AndForm from './components/AndForm';
+import AndList from './components/AndList';
 
 function App() {
   return (
     <div className="App">
-      <AndForm />
+      <AndList />
     </div>
   );
 }
