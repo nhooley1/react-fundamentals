@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Andi from './andi';
 import Card from '../UI/Card';
 import AndUpdateForm from './AndUpdateForm';
 import classes from './AndList.module.css';
 
-const AndList = () => {
+const AndList = (props) => {
   const [showUpdateForm, setShowUpdateForm] = useState(false);
-  const [enteredName, setEnteredName] = useState(false);
-  const [selected, setSelected] = useState('');
+  const [selectedId, setSelectedId] = useState('');
+  const [isUpdated, setIsUpdated] = useState(false);
   const [andiList, setAndiList] = useState([
     {
       id: 1,
-      name: 'Nicholas Hooley',
+      name: 'timmyy',
       role: 'Developer',
       title: 'Tennis fanatic',
     },
@@ -30,41 +30,30 @@ const AndList = () => {
     },
   ]);
 
-  const onUpdateAndiHandler = (event) => {
-    event.preventDefault();
-    event.target.reset();
+  const onUpdateListItem = (andi) => {
+    // spread operator to make shallow copy of object
+    let updatedAndi = { ...andi };
 
-    const andi = andiList.find((obj) => {
-      return obj.name === enteredName;
-    });
-  };
-
-  const onEnteredNameHandler = (event) => {
-    setEnteredName(event.target.value);
+    const updatedData = andiList.map((x) =>
+      x.id === updatedAndi.id ? updatedAndi : x
+    );
+    setAndiList(updatedData);
+    setIsUpdated(true);
+    setSelectedId('');
   };
 
   const onUpdateHandler = (id) => {
     setShowUpdateForm(true);
-    console.log('update');
     const andi = andiList.find((obj) => {
       return obj.id === id;
     });
-    console.log(andi);
   };
 
   const onDeleteHandler = (id) => {
-    console.log('delete');
-
-    console.log('hello');
     const andi = andiList.find((obj) => {
       return obj.key === id;
     });
     console.log(andi);
-  };
-
-  const setSelectedId = (id) => {
-    console.log('the selected id is' + id);
-    setSelected(id);
   };
 
   return (
@@ -79,34 +68,43 @@ const AndList = () => {
               name={andi.name}
               role={andi.role}
               title={andi.title}
-              selectedId={selected}
+              selectedId={selectedId}
             />
-            <button
-              onClick={() => {
-                setSelectedId(andi.id);
-                onUpdateHandler(andi.id);
-              }}
+            <div
+              className={
+                selectedId === andi.id
+                  ? classes.hidden
+                  : classes.buttoncontainer
+              }
             >
-              Update
-            </button>
-            <button
-              onClick={() => {
-                setSelectedId(andi.id);
-                onDeleteHandler(andi.id);
-              }}
-            >
-              Delete
-            </button>
+              <button
+                onClick={() => {
+                  setSelectedId(andi.id);
+                  onUpdateHandler(andi.id);
+                }}
+              >
+                Update
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedId(andi.id);
+                  onDeleteHandler(andi.id);
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </Card>
       <p></p>
-      {showUpdateForm && (
+      {showUpdateForm && !isUpdated && (
         <AndUpdateForm
-          onSubmit={onUpdateAndiHandler}
-          onEntered={onEnteredNameHandler}
+          selectedId={selectedId}
+          onUpdateListItem={onUpdateListItem}
         />
       )}
+      {isUpdated && <p>ANDi has been successfully updated!</p>}
     </>
   );
 };

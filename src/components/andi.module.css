@@ -1,15 +1,18 @@
 .container {
   padding: 10px;
   display: flex;
-}
-.item {
-  display: flex;
-  padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
 }
 
-.highlighted {
-  border-bottom: 5px solid red;
+.selectedcontainer {
+  padding: 10px;
+  display: flex;
+  border: 1px solid red;
+}
+
+.item {
+  display: flex;
+  padding-bottom: 10px;
 }
 
 .value {
