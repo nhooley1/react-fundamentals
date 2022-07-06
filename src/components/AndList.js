@@ -43,6 +43,7 @@ const AndList = (props) => {
   };
 
   const onUpdateHandler = (id) => {
+    setIsUpdated(false);
     setShowUpdateForm(true);
     const andi = andiList.find((obj) => {
       return obj.id === id;
