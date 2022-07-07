@@ -7,10 +7,12 @@ const AndUpdateForm = (props) => {
   // destructuring props
   const { title, selectedId } = props;
 
-  // on of the probs was a nested object, seemed like the only way I could get it to work?
+  // on of the probs was a nested object, seemed like the only way I could get it to
   const {
     labels: { one, two, three, button },
   } = props.labels;
+
+  const id = selectedId;
 
   // using ref as this dummy project doesnt include validation
   // useState would check every key stroke
@@ -26,6 +28,7 @@ const AndUpdateForm = (props) => {
     const title = enteredTitleRef.current.value;
 
     const enteredFormData = {
+      id,
       name,
       role,
       title,
@@ -58,6 +61,9 @@ const AndUpdateForm = (props) => {
         </label>
         <button className={classes.button}>{button}</button>
       </form>
+      <button className={classes.button} onClick={props.onCancel}>
+        Cancel
+      </button>
     </>
   );
 };

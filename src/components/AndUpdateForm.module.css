@@ -11,3 +11,7 @@
 .button {
   max-width: 100px;
 }
+
+.buttoncontainer {
+  display: flex;
+}

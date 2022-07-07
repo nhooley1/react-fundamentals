@@ -68,6 +68,8 @@ const AndList = (props) => {
     }
     setAndiList((andList) => [...andList, addedAndi]);
     setShowAddButton(false);
+    setShowUpdateForm(false);
+    setShowAddButton(true);
   };
 
   const onUpdateHandler = () => {
@@ -112,6 +114,12 @@ const AndList = (props) => {
     setFormLabels(labels);
     setFormTitle('Add ANDi');
     setShowUpdateForm(true);
+  };
+
+  const onCancelHandler = () => {
+    setShowUpdateForm(false);
+    setShowAddButton(true);
+    setSelectedId('');
   };
 
   return (
@@ -171,6 +179,7 @@ const AndList = (props) => {
           selectedId={selectedId}
           onUpdateListItem={onUpdateListItem}
           onAddListItem={onAddListItem}
+          onCancel={onCancelHandler}
           labels={formLabels}
         />
       )}
