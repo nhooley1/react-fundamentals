@@ -123,6 +123,7 @@ const AndList = (props) => {
   };
 
   const onCancelHandler = () => {
+    setFormError(false);
     setShowUpdateForm(false);
     setShowAddButton(true);
     setSelectedId('');
@@ -194,7 +195,7 @@ const AndList = (props) => {
         />
       )}
       {isUpdated && <p>{updateText}</p>}
-      {formError && <p>Please enter some values</p>}
+      {formError && <p>Please enter some values!</p>}
     </>
   );
 };
