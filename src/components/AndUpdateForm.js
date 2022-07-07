@@ -27,6 +27,13 @@ const AndUpdateForm = (props) => {
     const role = roleInputRef.current.value;
     const title = enteredTitleRef.current.value;
 
+    if (name === '' && role === '' && title === '') {
+      props.setError(true);
+      return;
+    }
+
+    props.setError(false);
+
     const enteredFormData = {
       id,
       name,
@@ -45,25 +52,32 @@ const AndUpdateForm = (props) => {
 
   return (
     <>
+      {' '}
       <h2>{title}</h2>
-      <form className={classes.container} onSubmit={formSubmissionHandler}>
-        <label className={classes.label}>
-          {one}
-          <input ref={nameInputRef} type="text" id="newname"></input>
-        </label>
-        <label className={classes.label}>
-          {two}
-          <input ref={roleInputRef} type="text" id="newrole"></input>
-        </label>
-        <label className={classes.label}>
-          {three}
-          <input ref={enteredTitleRef} type="text" id="newtitle"></input>
-        </label>
-        <button className={classes.button}>{button}</button>
-      </form>
-      <button className={classes.button} onClick={props.onCancel}>
-        Cancel
-      </button>
+      <Card className={classes.formcard}>
+        <form className={classes.container} onSubmit={formSubmissionHandler}>
+          <div className={classes.formcontainer}>
+            <label className={classes.label}>
+              {one}
+              <input ref={nameInputRef} type="text" id="newname"></input>
+            </label>
+            <label className={classes.label}>
+              {two}
+              <input ref={roleInputRef} type="text" id="newrole"></input>
+            </label>
+            <label className={classes.label}>
+              {three}
+              <input ref={enteredTitleRef} type="text" id="newtitle"></input>
+            </label>
+          </div>
+          <div className={classes.buttoncontainer}>
+            <button className={classes.add}>{button}</button>
+            <button className={classes.cancel} onClick={props.onCancel}>
+              Cancel
+            </button>
+          </div>
+        </form>
+      </Card>
     </>
   );
 };

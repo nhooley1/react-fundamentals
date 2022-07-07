@@ -1,13 +1,15 @@
 .container {
   padding: 10px;
   display: flex;
-  border-bottom: 1px solid #ccc;
+  border: 2px solid #ccc;
+  border-radius: 10px;
 }
 
 .selectedcontainer {
   padding: 10px;
   display: flex;
-  border-bottom: 10px solid green;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
 
 .item {

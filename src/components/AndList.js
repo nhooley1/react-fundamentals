@@ -11,6 +11,9 @@ const AndList = (props) => {
   const [showAddButton, setShowAddButton] = useState(true);
   const [formTitle, setFormTitle] = useState('');
   const [formLabels, setFormLabels] = useState({});
+  const [formError, setFormError] = useState(false);
+
+  let updateText = '';
 
   console.log('re-render');
 
@@ -51,6 +54,7 @@ const AndList = (props) => {
     setIsUpdated(true);
     setShowAddButton(true);
     setSelectedId('');
+    updateText = 'ANDi has been successfully updated!';
   };
 
   const onAddListItem = (andi) => {
@@ -70,6 +74,7 @@ const AndList = (props) => {
     setShowAddButton(false);
     setShowUpdateForm(false);
     setShowAddButton(true);
+    updateText = 'ANDi has been successfully updated!';
   };
 
   const onUpdateHandler = () => {
@@ -100,14 +105,15 @@ const AndList = (props) => {
   };
 
   const onAddHandler = () => {
+    setIsUpdated(false);
     setShowAddButton(false);
     setSelectedId('');
 
     const labels = {
       labels: {
-        one: 'Update Name: ',
-        two: 'Update Role: ',
-        three: 'Update Title: ',
+        one: 'Name: ',
+        two: 'Role: ',
+        three: 'Title: ',
         button: 'Add',
       },
     };
@@ -124,7 +130,7 @@ const AndList = (props) => {
 
   return (
     <>
-      <h3>List of ANDi's ----- Stored in useState</h3>
+      <h2>List of ANDi's</h2>
       <Card>
         {andiList.map((andi) => (
           <div className={classes.container}>
@@ -144,6 +150,7 @@ const AndList = (props) => {
               }
             >
               <button
+                className={classes.update}
                 onClick={() => {
                   setSelectedId(andi.id);
                   onUpdateHandler(andi.id);
@@ -152,6 +159,7 @@ const AndList = (props) => {
                 Update
               </button>
               <button
+                className={classes.delete}
                 onClick={() => {
                   setSelectedId(andi.id);
                   onDeleteHandler(andi.id);
@@ -166,6 +174,7 @@ const AndList = (props) => {
       <p></p>
       {showAddButton && (
         <button
+          className={classes.add}
           onClick={() => {
             onAddHandler();
           }}
@@ -181,9 +190,11 @@ const AndList = (props) => {
           onAddListItem={onAddListItem}
           onCancel={onCancelHandler}
           labels={formLabels}
+          setError={setFormError}
         />
       )}
-      {isUpdated && <p>ANDi has been successfully updated!</p>}
+      {isUpdated && <p>{updateText}</p>}
+      {formError && <p>Please enter some values</p>}
     </>
   );
 };

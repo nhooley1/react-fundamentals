@@ -1,7 +1,7 @@
 .container {
   display: flex;
   margin-bottom: 20px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -9,9 +9,24 @@ button {
   height: 20px;
 }
 
+.update {
+  background-color: blue;
+  color: white;
+}
+
+.delete {
+  background-color: brown;
+  color: white;
+}
+
 .buttoncontainer {
 }
 
 .hidden {
   visibility: hidden;
+}
+
+.add {
+  background-color: darkgreen;
+  color: white;
 }

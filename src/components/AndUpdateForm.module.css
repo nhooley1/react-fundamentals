@@ -1,7 +1,14 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
+
+.formcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .label {
@@ -14,4 +21,24 @@
 
 .buttoncontainer {
   display: flex;
+}
+
+.add {
+  background-color: green;
+  color: white;
+}
+
+.cancel {
+  background-color: brown;
+  color: white;
+}
+
+.formcard {
+  flex-direction: row;
+}
+
+input[type='text'] {
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  margin-left: 10px;
 }
