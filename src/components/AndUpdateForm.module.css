@@ -26,6 +26,7 @@
 .add {
   background-color: green;
   color: white;
+  margin-right: 4px;
 }
 
 .cancel {
