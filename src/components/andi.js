@@ -11,6 +11,10 @@ const Andi = (props) => {
       }
     >
       <div className={classes.item}>
+        <div className={classes.key}>Id:</div>
+        <div className={classes.value}>{props.id}</div>
+      </div>
+      <div className={classes.item}>
         <div className={classes.key}>Name:</div>
         <div className={classes.value}>{props.name}</div>
       </div>
