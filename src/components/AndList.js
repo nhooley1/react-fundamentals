@@ -82,9 +82,9 @@ const AndList = (props) => {
 
     const labels = {
       labels: {
-        one: 'Update Name: ',
-        two: 'Update Role: ',
-        three: 'Update Title: ',
+        one: 'Updated Name: ',
+        two: 'Updated Role: ',
+        three: 'Updated Title: ',
         button: 'Update',
       },
     };
